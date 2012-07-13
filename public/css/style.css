@@ -1,0 +1,33 @@
+.container > .content {
+    max-width: 900px;
+}
+
+.member-list {
+    max-width: 640px;
+}
+
+.match-btn {
+    margin-right: 20px;
+}
+
+.canvas-left {
+    float: left;
+    width: 50%;
+    height: 100%;
+    max-width: 300px;
+    max-height: 540px;
+}
+
+.canvas-right {
+    float: left;
+    width: 50%;
+    height: 100%;
+    max-width: 300px;
+    max-height: 540px;
+}
+
+.canvas-center {
+    float: left;
+    height: 100%;
+    max-height: 540px;
+}
