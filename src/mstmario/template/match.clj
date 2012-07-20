@@ -18,7 +18,7 @@
       (include-js "/js/match.js"))
     [:div {:class "container"}
      [:div {:id "config-block"}
-      "level" [:input {:id "level" :type "number" :value "0"}]
-      "speed" [:input {:id "speed" :type "number" :value "300"}]
+      "level" [:input {:id "level" :class "input-config" :type "number" :value "0"}]
+      "speed" [:input {:id "speed" :class "input-config" :type "number" :value "300"}]
       [:button {:id "start-game" :class "btn btn-primary disabled" :disabled "" } "Start Game"]]
      [:div {:id "canvas-block"}]]))

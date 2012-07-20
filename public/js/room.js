@@ -72,6 +72,11 @@ $('document').ready(function() {
     $('#register-btn').click(function() {
         register($('#register-text').val());
     });
+    $('#register-text').keypress(function(e) {
+        if(e.keyCode === 13) {
+            register($('#register-text').val());
+        }
+    });
 });
 
 function register(name) {

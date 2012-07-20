@@ -165,35 +165,48 @@ $(document).ready(function() {
     }
 
     var seq = makeSequence();
+    var startGameFunc;
 
     if(!gameType || gameType === 'default') {
         $('#start-game').removeClass('disabled').removeAttr('disabled');
-        $('#start-game').click(function() {
-            var game = new Game({
-                level: $('#level').val(),
-                speed: $('#speed').val(),
-                id: 'single',
-                position: 'center'
-            });
-            document.addEventListener("keydown", function(e) {
-                if(keyEvtMap[e.keyIdentifier]) {
-                    game.manipulate(keyEvtMap[e.keyIdentifier]);
-                    e.stopPropagation();
-                    e.preventDefault();
-                }
-            });
-            $('#config-block').hide();
-            game.start(true);
-        });
+        startGameFunc = startSinglePlay;
     } else {
-        $('#start-game').click(function() {
-            $('#config-block').hide();
+        startGameFunc = function() {
             seq.startGame();
-        });
+        };
 
         seq.run();
     }
+    registerListener(function() {
+        startGameFunc();
+        $('#config-block').hide();
+    });
 });
 
+function registerListener(listener) {
+    $('#start-game').click(listener);
+    $('.input-config').keypress(function(e) {
+        if(e.keyCode === 13) { // enter key
+            listener();
+        }
+    });
+}
+
+function startSinglePlay() {
+    var game = new Game({
+        level: $('#level').val(),
+        speed: $('#speed').val(),
+        id: 'single',
+        position: 'center'
+    });
+    document.addEventListener("keydown", function(e) {
+        if(keyEvtMap[e.keyIdentifier]) {
+            game.manipulate(keyEvtMap[e.keyIdentifier]);
+            e.stopPropagation();
+            e.preventDefault();
+        }
+    });
+    game.start(true);
+}
 
 }).call(this);
