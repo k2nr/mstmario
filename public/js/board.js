@@ -83,6 +83,10 @@ Board.prototype.init = function(level, randFunc) {
     this.a = [];
     this.viruses = level*4 + 4;
 
+    if(this.viruses > BOARD_WIDTH * (BOARD_HEIGHT-3)) {
+        this.viruses = BOARD_WIDTH * (BOARD_HEIGHT-3);
+    }
+
     var i;
     for(i=0; i < BOARD_HEIGHT; i++) {
         this.a[i] = [];

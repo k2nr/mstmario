@@ -5,7 +5,6 @@
     (:require [clojure.string :as string]
               [mstmario.room.view :as view]
               [mstmario.room.model :as model]
-              [mstmario.room.websock :as websock]
              ))
 
 
@@ -19,6 +18,6 @@
 
 (defroutes routes
   (GET "/" [] (index))
-  (GET "/ws" [] (wrap-aleph-handler websock/websocket-handler))
+  (GET "/ws" [] (wrap-aleph-handler model/websocket-handler))
   (POST "/" {params :params} (add-member)))
 

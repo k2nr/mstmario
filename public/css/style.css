@@ -28,6 +28,8 @@
 
 .canvas-center {
     float: left;
+    width: 50%;
     height: 100%;
+    max-width: 300px;
     max-height: 540px;
 }

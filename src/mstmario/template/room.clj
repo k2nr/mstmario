@@ -10,6 +10,8 @@
       "名前"
       [:input {:id "register-text" :type "text" :class "input-medium"}]
       [:button {:id "register-btn" :class "btn btn-primary"} "登録"]]
+      [:a {:href "/match/single"}
+       [:button {:id "single-play-btn" :class "btn btn-primary"} "Single Play"]]
     [:div {:id "accept-message" :style "display: none;"}
      [:form {:id "accept-form" :class "well" :action "/match/" :method "post"}
       [:span {:id "accept-opponent-name"}] " wants to match with you. Will you accept?"
@@ -23,7 +25,7 @@
       [:input {:id "start-game-match-id" :type "hidden" :name "match-id"}]
       [:input {:id "start-game-member-id" :type "hidden" :name "member-id"}]
       [:button {:type "submit" :id "start-game-btn" :class "btn btn-primary"} "Start Game"]]
-         ] ))
+     ]))
 
 (defn content []
   (common/content

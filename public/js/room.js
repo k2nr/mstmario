@@ -1,4 +1,5 @@
 (function() {
+
 var members = {};
 var sock = null;
 var myId;
@@ -111,4 +112,5 @@ function refreshMembers() {
         $('tbody#member-list').append(tr);
     }
 }
+
 }).call(this);

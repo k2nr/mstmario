@@ -4,7 +4,6 @@
           )
     (:require [mstmario.match.view :as view]
               [mstmario.match.model :as model]
-              [mstmario.match.websock :as websock]
               ))
 
 (defn index [] (view/index))
@@ -15,7 +14,7 @@
      :body (index)}))
 
 (defroutes routes
-  (GET  "/match/ws" [] (wrap-aleph-handler websock/websocket-handler))
+  (GET  "/match/ws" [] (wrap-aleph-handler model/websocket-handler))
   (GET  "/match/single" [] {:cookies {"type" "default"} :body (index)})
   (GET  "/match/:id" [id] {:cookies {"type" "audience"} :body (index)})
   (POST "/match/:id" {params :params} (match-index params)))

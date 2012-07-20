@@ -1,3 +1,7 @@
+(function() {
+
+var gameType;
+
 function setLocalStorage(k, v) {
     localStorage.setItem(k, JSON.stringify(v));
 }
@@ -15,10 +19,6 @@ function extend(mixin, obj) {
     }
     return obj;
 }
-///////////////
-// Global Vars
-///////////////
-var gameType;
 
 Port = function() {
     this.games = {};
@@ -168,22 +168,22 @@ $(document).ready(function() {
 
     if(!gameType || gameType === 'default') {
         $('#start-game').removeClass('disabled').removeAttr('disabled');
-        var game = new Game({
-            level: $('#level').val(),
-            speed: $('#speed').val(),
-            id: 'single',
-            position: 'center'
-        });
         $('#start-game').click(function() {
+            var game = new Game({
+                level: $('#level').val(),
+                speed: $('#speed').val(),
+                id: 'single',
+                position: 'center'
+            });
+            document.addEventListener("keydown", function(e) {
+                if(keyEvtMap[e.keyIdentifier]) {
+                    game.manipulate(keyEvtMap[e.keyIdentifier]);
+                    e.stopPropagation();
+                    e.preventDefault();
+                }
+            });
             $('#config-block').hide();
             game.start(true);
-        });
-        document.addEventListener("keydown", function(e) {
-            if(keyEvtMap[e.keyIdentifier]) {
-                game.manipulate(keyEvtMap[e.keyIdentifier]);
-                e.stopPropagation();
-                e.preventDefault();
-            }
         });
     } else {
         $('#start-game').click(function() {
@@ -195,3 +195,5 @@ $(document).ready(function() {
     }
 });
 
+
+}).call(this);

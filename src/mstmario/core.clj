@@ -6,11 +6,9 @@
     [aleph.http :only [start-http-server wrap-ring-handler]]
     )
   (:require [compojure.handler :as handler]
+            [mstmario.template.common :as template]
             [mstmario.room.controller :as rcontroller]
             [mstmario.match.controller :as mcontroller]
-            [mstmario.template.common :as template]
-            [mstmario.room.websock]
-            [mstmario.match.websock]
            ))
 
 (defroutes main-routes
